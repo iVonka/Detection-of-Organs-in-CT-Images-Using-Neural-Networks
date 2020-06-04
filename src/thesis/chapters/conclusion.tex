@@ -1,0 +1,7 @@
+\chapter{Conclusion}
+\label{ch:conclusion}
+I started my thesis with the literature review, where I covered the history of medical imaging and classical methods for image analysis, which were popular in the pre-ML era. I focused on CT images, the technology and other specifics of this medium. I researched convolutional neural networks and their extensions for different purposes.
+
+The practical part covered implementing a CNN model for segmentation of a spine and specific vertebrae. The CT data underwent preprocessing to make it suitable for this task. My architecture was based on UNet, but modified to handle CT images (3D volume). I compared the performance of my 3D model with the original 2D model on 3D images. I managed to segment the spine with satisfactory results. However, for specific vertebrae I could not make the network perform well. The results show, the derived architecture did not achieve better performance on the chosen dataset. In fact, it was slightly outperformed. 
+
+I am satisfied with my results, as this is the first time I worked with CNNs. However, there are still many ways on how to improve/change the architecture or other tasks that can be done with this data. Automatic segmentation of the spine or vertebrae can be used by doctors to give better diagnosis to their patients.

@@ -1,0 +1,49 @@
+\chapter{Convolutional Neural Networks}
+\label{ch:cnn}
+Convolutional Neural Networks have been around for some time, but gained popularity mostly in the recent years, since better hardware was available. It is a deep learning algorithm, mostly used on images. The tasks CNNs can solve include image classification or image segmentation and many others. Nowadays they are widely used for medical imaging problems. 
+
+They were first introduced by Yann LeCun et al. in 1999 \cite{lecun1999}. They used CNN for recognising handwritten numbers. This classic dataset is known as MNIST. Underlying principles of convolutional neural networks are inspired by the visual system of cats - discovery of neurons responsive to different stimuli in different regions (receptive fields), which are then put together.
+
+CNN is able to detect low-level features (for example edges) to high-level features (whole objects) in images. They are detected by applying appropriate filters. These filters are not pre-defined, but rather gained from training the network. To understand how this works, we need to introduce two important operations: convolution and pooling.
+
+\textbf{Convolution} can be described as multiplication followed by summation. This operation is explained by the image \ref{fig:convolution-image}. Input for convolution is an image \textit{I}. Then we take a filter (or kernel) \textit{K} - which is a matrix of weights - and slide it through the image, computing convolutions for every position of the filter. Result \textit{I * K} is called a feature map. You can see the resulting feature map has smaller resolution than the original image. If we want to keep the original resolution, we can pad the original image around its edges. These filters are responsible for detecting features in images. CNNs usually do not consist of only one convolutional layer, so it is possible to detect high-level features. 
+
+Another matrix operation is \textbf{pooling} (in \cite{lecun1999} originally referred to as sub-sampling). It is applied to feature maps from the previous convolutional layer. They down-sample (lower resolution of) feature maps, in order to reduce computation time, but also to allow for extracting more high-level features. There are two types of pooling, max and average pooling. Again, a filter passes through a feature map and returns the maximum and average respectively from its receptive field. This operation is visualised in \ref{fig:pooling-image}. In this image, stride of 2 was used. It means the filter did not pass the image pixel by pixel, but in ``steps'' of two.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=200pt]{images/convolution-image.png}
+    \caption{Visualisation of convolution}
+    \label{fig:convolution-image}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=200pt]{images/pooling.jpg}
+    \caption{Visualisation of pooling}
+    \label{fig:pooling-image}
+\end{figure}
+
+To see and understand how these layers work together, we can look at popular AlexNet \cite{alexnet2012} and its architecture \ref{fig:alexnet}. AlexNet won ImageNet classification competition in 2012, introducing an architecture which achieved a top-5 error of 15.3\%, which was 10\% lower than the second place.
+
+Alex Krizhevsky used images of the volume of 224 x 224 x 3 (channels for RGB). These are fed to the first convolutional layer with 96 kernels of size 11 x 11 x 3. Every kernel produces one feature map, so the result is 55 x 55 x 96, which is then max-pooled and fed to the second convolutional layer. The second convolutional layer consists of 256 kernels of size 5 x 5 x 96, producing volume of 27 x 27 x 256, which is max-pooled again. The third layer contains 384 kernels of 3 x 3 x 256. Outputs (without max pooling) are sent to the fourth layer with 384 kernels of 3 x 3 x 384 and then to the fifth layer with 256 kernels of 3 x 3 x 384. Then two fully connected layers follow.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics{images/alex-net.jpg}
+    \caption[Architecture of AlexNet]{Architecture of AlexNet \cite{alexnet2012}}
+    \label{fig:alexnet}
+\end{figure}
+
+Since 2012, CNNs have become very popular. There have been many extentions made to either solve problems occuring with CNNs or expand their use. I will talk about some of them next.
+
+%----SECTIONS----%
+\input{chapters/3_ConvolutionalNeuralNetworks/1_unet}
+\input{chapters/3_ConvolutionalNeuralNetworks/2_resnet}
+\input{chapters/3_ConvolutionalNeuralNetworks/3_densenet}
+\input{chapters/3_ConvolutionalNeuralNetworks/4_r-cnn}
+\input{chapters/3_ConvolutionalNeuralNetworks/5_capsulenetwork}
+
+
+
+

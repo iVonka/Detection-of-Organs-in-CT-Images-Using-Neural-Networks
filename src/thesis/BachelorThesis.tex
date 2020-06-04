@@ -1,0 +1,118 @@
+% arara: xelatex
+% arara: xelatex
+% arara: xelatex
+
+
+% options:
+% thesis=B bachelor's thesis
+% thesis=M master's thesis
+% czech thesis in Czech language
+% english thesis in English language
+% hidelinks remove colour boxes around hyperlinks
+
+\documentclass[thesis=B,english]{FITthesis}[2019/12/23]
+
+%\usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
+% \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
+% \usepackage[cp1250]{inputenc} % LaTeX source encoded as Windows-1250
+
+% \usepackage{subfig} %subfigures
+\usepackage{amsmath} %advanced maths
+\usepackage{booktabs}
+% \usepackage{amssymb} %additional math symbols
+
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+
+\usepackage{dirtree} %directory tree visualisation
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{nicematrix}
+
+% % list of acronyms
+% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
+% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
+% \makeglossaries
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% EDIT THIS
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\department{Department of Applied Mathematics}
+\title{Detection of Organs in CT Images Using Neural Networks}
+\authorGN{Ivana} %author's given name/names
+\authorFN{Hacajová} %author's surname
+\author{Ivana Hacajová} %author's name without academic degrees
+\authorWithDegrees{Ivana Hacajová} %author's name with academic degrees
+\supervisor{Ing. Jakub Žitný}
+\acknowledgements{First, I would like to thank Ing. Jakub Žitný for supervising my thesis, who was very enthusiastic about my project and always eager to help, providing me with useful resources. I am also very grateful for the support from my family and close friends, especially during the strange times of the COVID-19 pandemic, which left many people in uncertain and difficult situations. I am also very thankful to the organisers of VerSe`19: Large Scale Vertebrae Segmentation Challenge for providing us with very valuable CT data.}
+
+\abstractEN{This thesis contains research of the field of medical imaging, classical methods of image segmentation, computed tomography and convolutional neural networks. The practical part involves implementation of an architecture of 3D UNet for segmentation of the spine and specific vertebrae from CT scans. Furthermore, this architecture is compared to its 2D counterpart.}
+
+\abstractCS{Táto práca sa zaoberá výskumom zobrazovacích metód v medicíne, klasických prístupov k segmentácii obrázkov, CT a konvolučným neuronovým sietiam. Praktickou časťou je implementácia architektúry 3D UNet pre segmentáciu chrbtice a jednotlivých stavcov z CT obrázkov a jej porovnanie s jej 2D verziou.}
+
+\placeForDeclarationOfAuthenticity{Prague}
+\keywordsCS{zobrazovacie metódy v medicíne, konvolučné neuronové siete, segmentácia, CT, chrbtica, stavce}
+
+\keywordsEN{medical imaging, convolutional neural networks, segmentation, CT, spine, vertebrae}
+\declarationOfAuthenticityOption{5} %select as appropriate, according to the desired license (integer 1-6)
+\website{https://github.com/iVonka/Detection-of-Organs-in-CT-Images-Using-Neural-Networks} %optional thesis URL
+
+
+\begin{document}
+
+% \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
+% \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
+
+\setsecnumdepth{part}
+\include{chapters/introduction}
+\include{chapters/aim}
+
+\setsecnumdepth{all}
+
+%----LITERATURE REVIEW----%
+\include{chapters/1_MedicalImageAnalysis/0_mia}
+\include{chapters/2_ComputedTomography/0_ct}
+\include{chapters/3_ConvolutionalNeuralNetworks/0_cnn}
+\include{chapters/4_MyApproach/0_my-approach}
+
+%----MY APPROACH----%
+\setsecnumdepth{part}
+\include{chapters/conclusion}
+
+\include{chapters/bibliography}
+
+
+\setsecnumdepth{all}
+\appendix
+
+\include{chapters/appendix-segmentations}
+
+
+\chapter{Acronyms}
+
+
+% \printglossaries
+\begin{description}
+    \item[AI] Artificial Intelligence
+	\item[CNN] Convolutional Neural Network
+	\item[CT] Computed Tomography
+	\item[ML] Machine Learning
+\end{description}
+
+
+\chapter{Contents of enclosed SD card}
+
+%change appropriately
+
+\begin{figure}
+	\dirtree{%
+		.1 README.md\DTcomment{the file with SD card contents description}.
+		.1 src\DTcomment{the directory of source codes}.
+		.2 segmentation\DTcomment{implementation sources}.
+		.2 thesis\DTcomment{the directory of \LaTeX{} source codes of the thesis}.
+		.1 text\DTcomment{the thesis text directory}.
+		.2 thesis.pdf\DTcomment{the thesis text in PDF format}.
+	}
+\end{figure}
+
+\end{document}

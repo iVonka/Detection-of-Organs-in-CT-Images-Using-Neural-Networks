@@ -1,0 +1,4 @@
+\section{Preprocessing}
+Since the data contains attenuation values, initially I normalised it to (0,255), the common grey scale value range, so it could be easier to work with. Neural nets usually accept inputs of the same dimensions, so I resized my samples to dimensions of (96, 96, 128). The dataset consists of only 80 scans in different orientations, so it was important to put them into a common orientation. I chose RAS, as it is widely used around the community. For the reorienting, I used library called Nipype\cite{nipype}. Apart from resizing, I also implemented cropping and padding with zeros for 3D images, which I did not use in the end.
+
+All the preprocessing took place prior to training and the data was saved to the disc in the .npy format. This way a lot of time during the training was saved. 
