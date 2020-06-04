@@ -38,6 +38,7 @@ skimage=0.16.2
 * metrics.ipnyb - loss and metric functions
 * spine-segmentation.ipynb - pipeline for training and predicting binary segmentation of 3D images 
 * vertebrae-segmentation.ipnyb - pipeline for training and predicting multi-class segmentation of 3D images
+* cross-validation.ipnyb - pipeline for cross validation
 
 ## Data
 Data should be named in a way, when images and masks are sorted, they correspond to each other.
