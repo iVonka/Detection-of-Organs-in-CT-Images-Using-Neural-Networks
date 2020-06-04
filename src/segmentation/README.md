@@ -42,3 +42,5 @@ skimage=0.16.2
 
 ## Data
 Data should be named in a way, when images and masks are sorted, they correspond to each other.
+
+My implementation reads NifTy 3D images, which are then preprocessed and saved into .npy files.
